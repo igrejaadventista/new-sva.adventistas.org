@@ -20,21 +20,21 @@
 
 // ** Configurações do banco de dados - Você pode pegar estas informações com o serviço de hospedagem ** //
 /** O nome do banco de dados do WordPress */
-define( 'DB_NAME', 'sva_adventistas' );
+define( 'DB_NAME', $_ENV['WP_DB_NAME']);
 
-/** Usuário do banco de dados MySQL */
-define( 'DB_USER', 'root' );
+/** MySQL database username */
+define( 'DB_USER', $_ENV['WP_DB_USER']);
 
-/** Senha do banco de dados MySQL */
-define( 'DB_PASSWORD', 'root' );
+/** MySQL database password */
+define( 'DB_PASSWORD', $_ENV['WP_DB_PASSWORD']);
 
-/** Nome do host do MySQL */
-define( 'DB_HOST', 'localhost' );
+/** MySQL hostname */
+define( 'DB_HOST', $_ENV['WP_DB_HOST'] . ':3306');
 
-/** Charset do banco de dados a ser usado na criação das tabelas. */
+/** Database Charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8mb4' );
 
-/** O tipo de Collate do banco de dados. Não altere isso se tiver dúvidas. */
+/** The Database Collate type. Don't change this if in doubt. */
 define( 'DB_COLLATE', '' );
 
 /**#@+
