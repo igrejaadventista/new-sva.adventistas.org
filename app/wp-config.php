@@ -46,6 +46,7 @@ define( 'AS3CF_SETTINGS', serialize( array(
 	'bucket' => 'WP_S3_BUCKET'
 ) ) );
 
+
 /**#@+
  * Chaves únicas de autenticação e salts.
  *
