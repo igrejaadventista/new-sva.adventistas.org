@@ -21,7 +21,7 @@ jobs:
         sed -i 's/WP_DB_HOST/${{ secrets.WP_DB_HOST }}/g' ./app/wp-config.php
         sed -i 's/AWS_S3_ACCESS_KEY/${{ secrets.AWS_S3_ACCESS_KEY }}/g' ./app/wp-config.php
         sed -i 's/AWS_S3_SECRET_KEY/${{ secrets.AWS_S3_SECRET_KEY }}/g' ./app/wp-config.php
-        sed -i 's/WP_S3_BUCKET/${{ secrets.WP_S3_BUCKET }}/g' ./app/wp-config.php
+        sed -i 's#WP_S3_BUCKET#${{ secrets.WP_S3_BUCKET }}#g' ./app/wp-config.php
         echo "End transform: wp-config.php"
 
     - name: Deploy to Server - SSH
