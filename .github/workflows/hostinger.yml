@@ -35,3 +35,4 @@ jobs:
         REMOTE_USER: ${{ secrets.FTP_USER }}
         TARGET: "/home/${{ secrets.FTP_USER }}/domains/${{ secrets.SITE_DOMAIN }}/public_html"
         EXCLUDE: "/dist/, /node_modules/"
+        
