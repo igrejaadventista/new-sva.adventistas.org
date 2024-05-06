@@ -1,13 +1,15 @@
+name: Deploy website - DEV
+
 on:
   push:
     branches: [main]
   workflow_dispatch:
 
-name: Deploy website - DEV
 jobs:
   web-deploy:
     name: 🎉 Deploy
     runs-on: ubuntu-latest
+    
     steps:
     - name: 🚚 Get latest code
       uses: actions/checkout@v4
@@ -15,15 +17,14 @@ jobs:
     - name: Transform wp-config.php
       run: |
         echo "Init transform: wp-config.php"
-        sed -i 's/WP_DB_NAME/${{ secrets.WP_DB_NAME }}/g' ./app/wp-config.php
-        sed -i 's/WP_DB_USER/${{ secrets.WP_DB_USER }}/g' ./app/wp-config.php
-        sed -i 's/WP_DB_PASSWORD/${{ secrets.WP_DB_PASSWORD }}/g' ./app/wp-config.php
-        sed -i 's/WP_DB_HOST/${{ secrets.WP_DB_HOST }}/g' ./app/wp-config.php
-        sed -i 's/AWS_S3_ACCESS_KEY/${{ secrets.AWS_S3_ACCESS_KEY }}/g' ./app/wp-config.php
-        sed -i 's/AWS_S3_SECRET_KEY/${{ secrets.AWS_S3_SECRET_KEY }}/g' ./app/wp-config.php
-        sed -i 's/WP_S3_BUCKET/${{ secrets.WP_S3_BUCKET }}/g' ./app/wp-config.php
+        sed -i "s#WP_DB_NAME#${{ secrets.WP_DB_NAME }}#g" ./app/wp-config.php
+        sed -i "s#WP_DB_USER#${{ secrets.WP_DB_USER }}#g" ./app/wp-config.php
+        sed -i "s#WP_DB_PASSWORD#${{ secrets.WP_DB_PASSWORD }}#g" ./app/wp-config.php
+        sed -i "s#WP_DB_HOST#${{ secrets.WP_DB_HOST }}#g" ./app/wp-config.php
+        sed -i "s#AWS_S3_ACCESS_KEY#${{ secrets.AWS_S3_ACCESS_KEY }}#g" ./app/wp-config.php
+        sed -i "s#AWS_S3_SECRET_KEY#${{ secrets.AWS_S3_SECRET_KEY }}#g" ./app/wp-config.php
+        sed -i "s#WP_S3_BUCKET#${{ secrets.WP_S3_BUCKET }}#g" ./app/wp-config.php
         echo "End transform: wp-config.php"
-
     - name: Deploy to Server - SSH
       uses: easingthemes/ssh-deploy@main
       with:
